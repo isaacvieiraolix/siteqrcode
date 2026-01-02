@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de QR Code</title>
+
+    <!-- CSS futurista -->
+    <link rel="stylesheet" href="/estatica/style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <div class="brand">
+            <div class="logo">QR</div>
+            <div>
+                <h1>Gerador de QR Code</h1>
+                <p>Backend em Python</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- CARD ESQUERDO -->
+    <div class="card">
+        <form method="POST" class="controls">
+
+            <input
+                type="text"
+                name="link"
+                class="input"
+                placeholder="Digite o link (ex: /static/arquivo.pdf)"
+                required
+            >
+
+            <button type="submit" class="btn btn-primary">
+                Gerar QR Code
+            </button>
+
+        </form>
+    </div>
+
+    <!-- CARD DO QR -->
+    <div class="card qr-card">
+        <span class="qr-badge">QR</span>
+
+        <div class="qr-frame">
+            {% if qr %}
+                <img src="/static/imagem.png" alt="QR Code">
+            {% else %}
+                <p class="text-muted">QR Code aparecerá aqui</p>
+            {% endif %}
+        </div>
+
+        {% if qr %}
+            <a href="/static/arquivo.pdf" class="btn btn-outline">
+                Baixar arquivo
+            </a>
+        {% endif %}
+    </div>
+
+    <div class="footer">
+        <span>© QR Code System</span>
+        <span class="text-muted">Flask + HTML + CSS</span>
+    </div>
+
+</div>
+
+</body>
+</html>
